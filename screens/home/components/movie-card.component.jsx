@@ -6,25 +6,27 @@ import { CustomButton } from "../../../components/custom-button.component";
 import { MOVIES } from "../../../constants/movies";
 
 // TODO:: how to set up a universal theme?
-export const MovieCard = () => {
+export const MovieCard = (props) => {
+    const { id, rating, title, year, image } = props;
+
     return(
-    <ImageBackground imageStyle={styles.image} source={MOVIES[0].image} style={styles.imageContainer}>
-        <View style={styles.colorOverlay}/>
-        <CustomBadge text={'6.9'}/>
-        <View style={styles.contentContainer}>
-            <Text style={styles.title}>Movie Title</Text>
-            <Text style={styles.subtitle}>2005</Text>
-            <View style={styles.watchNowContainer}>
-                <CustomButton text={'Watch Now'} />
-                <FAB
-                    icon="plus"
-                    size={'small'}
-                    style={styles.addToWatchList}
-                    onPress={() => console.log('Pressed')}
-                />
+        <ImageBackground imageStyle={styles.image} source={image} style={styles.imageContainer}>
+            <View style={styles.colorOverlay}/>
+            <CustomBadge text={rating}/>
+            <View style={styles.contentContainer}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.subtitle}>{year}</Text>
+                <View style={styles.watchNowContainer}>
+                    <CustomButton text={'Watch Now'} />
+                    <FAB
+                        icon="plus"
+                        size={'small'}
+                        style={styles.addToWatchList}
+                        onPress={() => console.log('Pressed movie with id: ', id)}
+                    />
+                </View>
             </View>
-        </View>
-    </ImageBackground>
+        </ImageBackground>
     )
 }
 
@@ -52,12 +54,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     imageContainer: {
+        marginRight: 15,
         width: 200,
         height: 200,
     },
     title: {
         color: 'white',
-        fontSize: 25,
+        fontSize: 22,
     },
     subtitle: {
         color: 'white',
