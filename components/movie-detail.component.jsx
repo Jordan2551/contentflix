@@ -2,13 +2,14 @@ import React from "react";
 import { Image, ImageBackground, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Button, Text } from "react-native-paper";
 
-export const CustomButton = (props) => {
-    const { text, onPress } = props;
+export const MovieDetail = (props) => {
+    const { movie } = props;
 
     return(
-        <Button style={styles.container} textColor={'white'} onPress={onPress}>
-            {text}
-        </Button>
+        <View style={styles.container}>
+            <Text>{movie.id}</Text>
+            <Text>{movie.title}</Text>
+        </View>
     )
 }
 

@@ -1,34 +1,22 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { MOVIE_CATEGORIES } from './constants/movie-categories';
-import { MOVIES } from './constants/movies';
-import { MovieCardCarousel } from './screens/home/components/movie-card-carousel/movie-card-carousel.component';
-import { getMoviesByCategories } from './screens/home/components/movie-card-carousel/utils';
+import { StyleSheet, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DiscoverScreen } from './screens/discover.screen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { MovieDetail, MovieDetailScreen } from './screens/movie-detail.screen';
 
-const moviesByCategories = getMoviesByCategories(MOVIES);
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      {/* // TODO:: REFACTOR THIS */}
-      <ScrollView>
-        {
-          MOVIE_CATEGORIES.map(category => {
-            return (<MovieCardCarousel category={category} movies={moviesByCategories[category]}/>)
-          })
-        }
-      </ScrollView>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer >
+          <Stack.Navigator initialRouteName="Discover">
+            <Stack.Screen name="Discover" component={DiscoverScreen} />
+            <Stack.Screen name="MovieDetail" component={MovieDetailScreen} />
+          </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black'
-  },
-});

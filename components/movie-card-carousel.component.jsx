@@ -1,10 +1,13 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
-import { MovieCard } from "../movie-card.component";
+import { MovieCard } from "./movie-card.component";
 
 export const MovieCardCarousel = (props) => {
     const { category, movies } = props;
+
+    const navigation = useNavigation();
 
     return(
         <View style={styles.container}>
@@ -14,7 +17,10 @@ export const MovieCardCarousel = (props) => {
                     {
                         movies.map(movie => {
                             const {id, rating, title, year, image} = movie;
-                            return <MovieCard id={id} rating={rating} title={title} year={year} image={image}/>
+                            const onPressPrimary = () => { navigation.navigate("MovieDetail", { id: movie.id})};
+                            const onPressSecondary = () => { console.log(`Add move with id: ${id} to watchlist`)};
+
+                            return <MovieCard id={id} rating={rating} title={title} year={year} image={image} onPressPrimary={onPressPrimary} onPressSecondary={onPressSecondary} secondaryIcon={'plus'}/>
                         })
                     }
                 </ScrollView>
@@ -31,7 +37,6 @@ const styles = StyleSheet.create({
         marginVertical: 30
     },
     category: {
-        color: 'white',
         fontSize: 25,
         marginBottom: 10
     }

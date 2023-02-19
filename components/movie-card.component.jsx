@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { FAB, Text } from "react-native-paper";
-import { CustomBadge } from "../../../components/custom-badge.component";
-import { CustomButton } from "../../../components/custom-button.component";
-import { MOVIES } from "../../../constants/movies";
+import { CustomBadge } from "./custom-badge.component";
+import { CustomButton } from "./custom-button.component";
 
 // TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
-    const { id, rating, title, year, image } = props;
+    const { id, rating, title, year, image, onPressPrimary, onPressSecondary, secondaryIcon } = props;
 
+    // TODO:: GET INTO USECALLBACK?
     return(
         <ImageBackground imageStyle={styles.image} source={image} style={styles.imageContainer}>
             <View style={styles.colorOverlay}/>
@@ -17,12 +17,12 @@ export const MovieCard = (props) => {
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.subtitle}>{year}</Text>
                 <View style={styles.watchNowContainer}>
-                    <CustomButton text={'Watch Now'} />
+                    <CustomButton text={'Watch Now'} onPress={onPressPrimary} />
                     <FAB
-                        icon="plus"
+                        icon={secondaryIcon}
                         size={'small'}
                         style={styles.addToWatchList}
-                        onPress={() => console.log('Pressed movie with id: ', id)}
+                        onPress={onPressSecondary}
                     />
                 </View>
             </View>
