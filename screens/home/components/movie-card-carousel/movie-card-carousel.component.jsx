@@ -1,14 +1,14 @@
 import React from "react";
 import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
-import { MovieCard } from "./movie-card.component";
+import { MovieCard } from "../movie-card.component";
 
 export const MovieCardCarousel = (props) => {
-    const { title, movies } = props;
+    const { category, movies } = props;
 
     return(
         <View style={styles.container}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.category}>{category}</Text>
             <View>
                 <ScrollView horizontal>
                     {
@@ -27,10 +27,10 @@ export const MovieCardCarousel = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: 200,
+        height: 180,
         marginVertical: 30
     },
-    title: {
+    category: {
         color: 'white',
         fontSize: 25,
         marginBottom: 10

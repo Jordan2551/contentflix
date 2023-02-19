@@ -1,15 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { MOVIE_CATEGORIES } from './constants/movie-categories';
 import { MOVIES } from './constants/movies';
-import { MovieCardCarousel } from './screens/home/components/movie-card-carousel.component';
+import { MovieCardCarousel } from './screens/home/components/movie-card-carousel/movie-card-carousel.component';
+import { getMoviesByCategories } from './screens/home/components/movie-card-carousel/utils';
 
+const moviesByCategories = getMoviesByCategories(MOVIES);
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <MovieCardCarousel title={"Horror"} movies={MOVIES.slice(0,10)}/>
-      <MovieCardCarousel title={"Drama"} movies={MOVIES.slice(10,20)}/>
+      {/* // TODO:: REFACTOR THIS */}
+      <ScrollView>
+        {
+          MOVIE_CATEGORIES.map(category => {
+            return (<MovieCardCarousel category={category} movies={moviesByCategories[category]}/>)
+          })
+        }
+      </ScrollView>
     </View>
   );
 }

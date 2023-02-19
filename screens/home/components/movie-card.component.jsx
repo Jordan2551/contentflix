@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         borderRadius: 20,
     },
     contentContainer: {
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         marginRight: 15,
-        width: 200,
-        height: 200,
+        width: 180,
+        height: 180,
     },
     title: {
         color: 'white',
