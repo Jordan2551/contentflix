@@ -1,1 +1,1 @@
-export const MOVIE_CATEGORIES = ['Action', 'Comedy', 'Drama', 'Horror']
+export const MOVIE_CATEGORIES = ['Action', 'Comedy', 'Drama', 'Horror'];
