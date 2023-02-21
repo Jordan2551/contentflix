@@ -6,26 +6,48 @@ import { CustomButton } from './custom-button.component';
 
 // TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
-  const { id, rating, title, year, image, onPressPrimary, onPressSecondary, secondaryIcon } = props;
+  const {
+    rating,
+    title,
+    year,
+    image,
+    onPressPrimary,
+    onPressSecondary,
+    secondaryIcon,
+  } = props;
 
   // TODO:: GET INTO USECALLBACK?
   return (
-    <ImageBackground imageStyle={styles.image} source={image} style={styles.imageContainer}>
+    <ImageBackground
+      imageStyle={styles.image}
+      source={image}
+      style={styles.imageContainer}
+    >
       <View style={styles.colorOverlay} />
-      <CustomBadge text={rating} />
+      <CustomBadge
+        text={rating}
+        style={{ marginTop: 10, marginLeft: 10, alignSelf: 'flex-start' }}
+      />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{year}</Text>
+        <Text variant="titleLarge" style={styles.title}>
+          {title}
+        </Text>
+        <Text variant="titleMedium" style={styles.subtitle}>
+          {year}
+        </Text>
         <View style={styles.watchNowContainer}>
           <CustomButton text={'Watch Now'} onPress={onPressPrimary} />
-          <FAB icon={secondaryIcon} size={'small'} style={styles.addToWatchList} onPress={onPressSecondary} />
+          <FAB
+            icon={secondaryIcon}
+            size={'small'}
+            style={styles.addToWatchList}
+            onPress={onPressSecondary}
+          />
         </View>
       </View>
     </ImageBackground>
   );
 };
-
-// TODO:: how to make all text white instead of white for all?
 
 const styles = StyleSheet.create({
   colorOverlay: {
@@ -55,11 +77,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'white',
-    fontSize: 22,
   },
   subtitle: {
     color: 'white',
-    fontSize: 20,
     fontWeight: '300',
   },
   watchNowContainer: {

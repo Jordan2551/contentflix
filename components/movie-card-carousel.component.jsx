@@ -5,16 +5,18 @@ import { Text } from 'react-native-paper';
 import { MovieCard } from './movie-card.component';
 
 export const MovieCardCarousel = (props) => {
-  const { category, movies } = props;
+  const { category, movies, horizontal = true, style = {} } = props;
 
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.category}>{category}</Text>
+    <View style={{ ...styles.container, ...style }}>
+      <Text variant="titleLarge" style={styles.category}>
+        {category}
+      </Text>
       <View>
         <ScrollView horizontal>
-          {movies.map((movie) => {
+          {movies.map((movie, index) => {
             const { id, rating, title, year, image } = movie;
             const onPressPrimary = () => {
               navigation.navigate('MovieDetail', { id: movie.id });
@@ -25,6 +27,7 @@ export const MovieCardCarousel = (props) => {
 
             return (
               <MovieCard
+                key={index}
                 id={id}
                 rating={rating}
                 title={title}
@@ -45,10 +48,8 @@ export const MovieCardCarousel = (props) => {
 const styles = StyleSheet.create({
   container: {
     height: 180,
-    marginVertical: 30,
   },
   category: {
-    fontSize: 25,
     marginBottom: 10,
   },
 });

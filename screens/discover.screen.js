@@ -12,7 +12,14 @@ export const DiscoverScreen = () => {
     <View style={styles.container}>
       <ScrollView>
         {MOVIE_CATEGORIES.map((category) => {
-          return <MovieCardCarousel category={category} movies={moviesByCategories[category]} />;
+          return (
+            <MovieCardCarousel
+              key={category}
+              category={category}
+              movies={moviesByCategories[category]}
+              style={{ marginVertical: 30 }}
+            />
+          );
         })}
       </ScrollView>
     </View>
