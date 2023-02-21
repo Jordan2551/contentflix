@@ -11,11 +11,15 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <SafeAreaProvider>
-      <NavigationContainer >
-          <Stack.Navigator initialRouteName="Discover">
-            <Stack.Screen name="Discover" component={DiscoverScreen} />
-            <Stack.Screen name="MovieDetail" component={MovieDetailScreen} />
-          </Stack.Navigator>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Discover">
+          <Stack.Screen name="Discover" component={DiscoverScreen} />
+          <Stack.Screen
+            name="MovieDetail"
+            component={MovieDetailScreen}
+            options={{ title: '' }}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );

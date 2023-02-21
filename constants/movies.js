@@ -7,6 +7,7 @@ export const MOVIES = [
       "A group of explorers embarks on a journey to find a lost treasure hidden deep in the Amazon rainforest. Along the way, they face numerous challenges and dangers, including wild animals and treacherous terrain. Will they be able to find the treasure before it's too late?",
     year: 2015,
     image: require('../assets/movie-covers/96286247.png'),
+    video: require('../assets/video.mp4'),
     category: 'Action',
   },
   {
@@ -17,6 +18,7 @@ export const MOVIES = [
       "A young woman attends a masquerade ball and falls in love with a mysterious stranger. As they dance the night away, she wonders who he really is and what secrets he's hiding. Will she be able to uncover the truth and find true love?",
     year: 2018,
     image: require('../assets/movie-covers/278344330.png'),
+    video: require('../assets/video.mp4'),
     category: 'Action',
   },
   {
@@ -27,6 +29,7 @@ export const MOVIES = [
       'When a devastating hurricane hits the Florida coast, a group of strangers must come together to survive the storm. As tensions rise and secrets are revealed, they discover that sometimes the biggest threat comes from within.',
     year: 2021,
     image: require('../assets/movie-covers/315287915.png'),
+    video: require('../assets/video.mp4'),
     category: 'Horror',
   },
   {
@@ -37,6 +40,7 @@ export const MOVIES = [
       "A struggling stand-up comedian gets a second chance at fame when he is invited to perform on a popular late-night talk show. But when his old rival shows up to steal the spotlight, he must decide if he's willing to go all in for his shot at stardom.",
     year: 2020,
     image: require('../assets/movie-covers/360853416.png'),
+    video: require('../assets/video.mp4'),
     category: 'Drama',
   },
   {
@@ -47,6 +51,7 @@ export const MOVIES = [
       'When a group of friends take a vacation to a secluded island paradise, they soon discover that things are not as they seem. As they uncover the dark secrets of the island, they must fight to survive and escape the deadly paradise.',
     year: 2019,
     image: require('../assets/movie-covers/441460933.png'),
+    video: require('../assets/video.mp4'),
     category: 'Comedy',
   },
   {
@@ -57,6 +62,7 @@ export const MOVIES = [
       'A group of travelers are stranded on a deserted highway when their car breaks down. As they try to find help, they soon realize that they are not alone on the road. With danger lurking around every turn, they must fight to stay alive and make it to safety.',
     year: 2018,
     image: require('../assets/movie-covers/467323711.png'),
+    video: require('../assets/video.mp4'),
     category: 'Horror',
   },
   {
@@ -67,6 +73,7 @@ export const MOVIES = [
       'When a group of survivors are forced to make a last stand against a horde of zombies, they must rely on their wits and their weapons to stay alive. As the stakes get higher and the odds get longer, they must come together to fight for their lives and their future.',
     year: 2017,
     image: require('../assets/movie-covers/592362641.png'),
+    video: require('../assets/video.mp4'),
     category: 'Action',
   },
   {
@@ -77,6 +84,7 @@ export const MOVIES = [
       'A young man is caught smuggling drugs out of Turkey and sentenced to life in a brutal prison. As he fights to survive the harsh conditions and brutal treatment, he must also find a way to escape and reclaim his freedom.',
     year: 2016,
     image: require('../assets/movie-covers/852129226.png'),
+    video: require('../assets/video.mp4'),
     category: 'Horror',
   },
   {
@@ -87,6 +95,7 @@ export const MOVIES = [
       'A group of adventurers embarks on a perilous journey to find a legendary gem that is said to possess incredible power. As they traverse treacherous landscapes and face many obstacles, they discover that the true value of the gem lies in its ability to bring people together and inspire acts of bravery and selflessness.',
     year: 2019,
     image: require('../assets/movie-covers/1034958663.png'),
+    video: require('../assets/video.mp4'),
     category: 'Action',
   },
   {
@@ -97,6 +106,7 @@ export const MOVIES = [
       "A young woman returns to her hometown to confront the ghosts of her past and unravel the mystery surrounding her father's death. Along the way, she reconnects with old friends and discovers a renewed sense of purpose and belonging.",
     year: 2020,
     image: require('../assets/movie-covers/1070611564.png'),
+    video: require('../assets/video.mp4'),
     category: 'Horror',
   },
   {

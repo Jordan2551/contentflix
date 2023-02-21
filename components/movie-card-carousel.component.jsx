@@ -17,7 +17,7 @@ export const MovieCardCarousel = (props) => {
       <View>
         <ScrollView horizontal>
           {movies.map((movie, index) => {
-            const { id, rating, title, year, image } = movie;
+            const { id, rating, title, year, image, video } = movie;
             const onPressPrimary = () => {
               navigation.navigate('MovieDetail', { id: movie.id });
             };
@@ -33,6 +33,7 @@ export const MovieCardCarousel = (props) => {
                 title={title}
                 year={year}
                 image={image}
+                video={video}
                 onPressPrimary={onPressPrimary}
                 onPressSecondary={onPressSecondary}
                 secondaryIcon={'plus'}
