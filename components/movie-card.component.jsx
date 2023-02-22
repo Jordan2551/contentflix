@@ -6,17 +6,9 @@ import { CustomButton } from './custom-button.component';
 
 // TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
-  const {
-    rating,
-    title,
-    year,
-    image,
-    onPressPrimary,
-    onPressSecondary,
-    secondaryIcon,
-  } = props;
+  const { rating, title, year, image, onPressPrimary, onPressSecondary } =
+    props;
 
-  // TODO:: GET INTO USECALLBACK?
   return (
     <ImageBackground
       imageStyle={styles.image}
@@ -38,8 +30,9 @@ export const MovieCard = (props) => {
         <View style={styles.watchNowContainer}>
           <CustomButton text={'Watch Now'} onPress={onPressPrimary} />
           <FAB
-            icon={secondaryIcon}
+            icon={'star-plus'}
             size={'small'}
+            color="black"
             style={styles.addToWatchList}
             onPress={onPressSecondary}
           />

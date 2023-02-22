@@ -1,26 +1,43 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { DiscoverScreen } from './screens/discover.screen';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { MovieDetail, MovieDetailScreen } from './screens/movie-detail.screen';
+import { StyleSheet } from 'react-native';
+import { MovieDetailScreen } from './screens/movie-detail.screen';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { DiscoverNavigator } from './navigators/discover.navigator';
+import { WatchlistNavigator } from './navigators/watchlist.navigator';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
-const Stack = createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-    <SafeAreaProvider>
+    <SafeAreaView style={styles.container}>
+      <StatusBar />
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Discover">
-          <Stack.Screen name="Discover" component={DiscoverScreen} />
-          <Stack.Screen
-            name="MovieDetail"
-            component={MovieDetailScreen}
-            options={{ title: '' }}
+        <Tab.Navigator
+          initialRouteName="Discover"
+          screenOptions={{ headerShown: false }}
+          inactiveColor="black"
+        >
+          <Tab.Screen
+            name="Discover"
+            component={DiscoverNavigator}
+            options={{ tabBarIcon: 'movie-search' }}
           />
-        </Stack.Navigator>
+          <Tab.Screen
+            name="Watchlist"
+            component={WatchlistNavigator}
+            options={{ tabBarIcon: 'star-plus' }}
+          />
+        </Tab.Navigator>
       </NavigationContainer>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

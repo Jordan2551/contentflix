@@ -11,6 +11,7 @@ export const DiscoverScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
+        {/* TODO:: add search */}
         {MOVIE_CATEGORIES.map((category) => {
           return (
             <MovieCardCarousel

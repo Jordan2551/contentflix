@@ -36,7 +36,6 @@ export const MovieCardCarousel = (props) => {
                 video={video}
                 onPressPrimary={onPressPrimary}
                 onPressSecondary={onPressSecondary}
-                secondaryIcon={'plus'}
               />
             );
           })}

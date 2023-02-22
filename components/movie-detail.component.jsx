@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Badge, Button, Text, Title } from 'react-native-paper';
 import { MOVIES } from '../constants/movies';
 import { CustomBadge } from './custom-badge.component';
@@ -24,8 +17,6 @@ export const MovieDetail = (props) => {
 
   return (
     <ScrollView>
-      {/* <ImageBackground source={image} style={styles.imageContainer} /> */}
-      {/* TODO:: how to set poster as thumbnail with play button? */}
       <Video
         source={video}
         style={styles.video}
@@ -74,8 +65,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-
-    // backgroundColor: 'tomato',
     justifyContent: 'space-between',
   },
 
