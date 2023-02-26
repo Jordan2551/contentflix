@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { MOVIE_CATEGORIES } from '../constants/movie-categories';
-import { MOVIES } from '../constants/movies';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
-import { getMoviesByCategories } from '../components/utils';
-
-const moviesByCategories = getMoviesByCategories(MOVIES);
+import { filterMovies } from '../components/utils';
+import { Searchbar } from 'react-native-paper';
 
 export const DiscoverScreen = () => {
+  const [filteredMovies, setFilteredMovies] = useState(filterMovies(''));
+  const [search, setSearch] = useState('');
+
+  const movieCategories = Object.keys(filteredMovies);
+
+  const onSearchChange = (query) => {
+    setSearch(query);
+    setFilteredMovies(filterMovies(query));
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        {/* TODO:: add search */}
-        {MOVIE_CATEGORIES.map((category) => {
+        <Searchbar
+          placeholder="Search for movies!"
+          onChangeText={onSearchChange}
+          value={search}
+          style={styles.searchBar}
+        />
+        {movieCategories.map((category) => {
           return (
             <MovieCardCarousel
               key={category}
               category={category}
-              movies={moviesByCategories[category]}
+              movies={filteredMovies[category]}
               style={{ marginVertical: 30 }}
             />
           );
@@ -31,8 +43,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 15,
+  },
+
+  searchBar: {
+    backgroundColor: '#f3f3f3',
   },
 });

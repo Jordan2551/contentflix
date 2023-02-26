@@ -287,6 +287,7 @@ export const MOVIES = [
       'A man with a genetic disorder that causes him to time-travel uncontrollably falls in love with a woman who has to cope with his frequent disappearances and dangerous accidents.',
     year: 2009,
     image: require('../assets/movie-covers/3276556505.png'),
+    category: 'Action',
   },
   {
     id: 'e458e7',

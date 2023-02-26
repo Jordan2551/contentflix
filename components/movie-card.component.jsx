@@ -30,7 +30,7 @@ export const MovieCard = (props) => {
         <View style={styles.watchNowContainer}>
           <CustomButton text={'Watch Now'} onPress={onPressPrimary} />
           <FAB
-            icon={'star-plus'}
+            icon={'plus'}
             size={'small'}
             color="black"
             style={styles.addToWatchList}
