@@ -7,11 +7,10 @@ export const addToWatchlist = async (id) => {
     const watchList = await getWatchList();
 
     // Only push unique movies
-    if (watchList.indexOf(id) === -1) {
+    if (id in watchList) {
       watchList.push(id);
+      await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchList));
     }
-
-    await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchList));
 
     console.log(
       `🚀 ~ file: storage.js ~ addToWatchlist: successfully added movie with id: ${id} to watchlist`
@@ -23,7 +22,7 @@ export const addToWatchlist = async (id) => {
 
 export const removeFromWatchlist = async (id) => {
   try {
-    const watchList = getWatchList();
+    const watchList = await getWatchList();
     const index = watchList.indexOf(id);
 
     // Ensure we are not trying to remove a non-existent movie id.
@@ -40,8 +39,22 @@ export const removeFromWatchlist = async (id) => {
 export const getWatchList = async () => {
   try {
     const watchlist = await AsyncStorage.getItem(WATCHLIST_KEY);
+    console.log(
+      '🚀 ~ file: storage.js:42 ~ getWatchList ~ watchlist:',
+      watchlist
+    );
     return watchlist != null ? JSON.parse(watchlist) : [];
   } catch (error) {
     console.error(`Error getting movies: `, error);
+  }
+};
+
+export const isMovieInWatchlist = async (id) => {
+  try {
+    const watchlist = await getWatchList();
+
+    return id in watchlist;
+  } catch (error) {
+    console.error(`Error checking if movie is in the watchlist: `, error);
   }
 };

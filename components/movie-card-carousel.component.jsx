@@ -18,18 +18,7 @@ export const MovieCardCarousel = (props) => {
       <View>
         <ScrollView horizontal={horizontal}>
           {movies.map((movie, index) => {
-            const { id, rating, title, year, image, video } = movie;
-
-            const onPressPrimary = () => {
-              navigation.navigate('MovieDetail', { id: movie.id });
-            };
-
-            const onPressSecondary = async () => {
-              let watchListMovies = await getWatchList();
-
-              await addToWatchlist(id);
-              watchListMovies = await getWatchList();
-            };
+            const { id, rating, title, year, image } = movie;
 
             return (
               <MovieCard
@@ -39,9 +28,6 @@ export const MovieCardCarousel = (props) => {
                 title={title}
                 year={year}
                 image={image}
-                video={video}
-                onPressPrimary={onPressPrimary}
-                onPressSecondary={onPressSecondary}
               />
             );
           })}
