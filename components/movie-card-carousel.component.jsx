@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
+import { addToWatchlist, getWatchList } from '../storage';
 import { MovieCard } from './movie-card.component';
 
 export const MovieCardCarousel = (props) => {
@@ -18,11 +19,16 @@ export const MovieCardCarousel = (props) => {
         <ScrollView horizontal={horizontal}>
           {movies.map((movie, index) => {
             const { id, rating, title, year, image, video } = movie;
+
             const onPressPrimary = () => {
               navigation.navigate('MovieDetail', { id: movie.id });
             };
-            const onPressSecondary = () => {
-              console.log(`Add move with id: ${id} to watchlist`);
+
+            const onPressSecondary = async () => {
+              let watchListMovies = await getWatchList();
+
+              await addToWatchlist(id);
+              watchListMovies = await getWatchList();
             };
 
             return (

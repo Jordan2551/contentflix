@@ -39,7 +39,7 @@ export const MovieDetail = (props) => {
           <MovieCardCarousel
             key={category}
             movies={moviesByCategories[category]}
-            horizontal={false}
+            horizontal={true}
           />
         </View>
       </View>
