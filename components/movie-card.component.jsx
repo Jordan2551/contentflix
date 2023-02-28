@@ -8,13 +8,20 @@ import {
   addToWatchlist,
   removeFromWatchlist,
 } from '../storage';
+import { useNavigation } from '@react-navigation/native';
+import useSWR from 'swr';
 
 // TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
   const { id, rating, title, year, image } = props;
   const [inWatchlist, setInWatchlist] = useState(false);
+  const navigation = useNavigation();
 
-  // THIS IS TOO COMPLICATED
+  // Start with ugly UI (prototype) then work to a nicer look
+  // Every video should be a small PR (no more than 100 lines)
+  // Use react SWR
+  // Start with this in the video then switch to SWR
+  // Do it wrong do it right (sequences)
   useEffect(() => {
     const init = async () => {
       if (await isMovieInWatchlist(id)) {
@@ -25,10 +32,24 @@ export const MovieCard = (props) => {
     };
     init();
   }, []);
-  console.log(
-    '🚀 ~ file: movie-card.component.jsx:12 ~ MovieCard ~ inWatchlist:',
-    inWatchlist
-  );
+
+  // DID NOT WORK?
+  // const { data, error, isLoading } = useSWR('test', () =>
+  //   isMovieInWatchlist(id)
+  // );
+  // console.log(
+  //   '🚀 ~ file: movie-card.component.jsx:37 ~ MovieCard ~ data:',
+  //   data
+  // );
+  // console.log(
+  //   '🚀 ~ file: movie-card.component.jsx:37 ~ MovieCard ~ isLoading:',
+  //   isLoading
+  // );
+
+  // console.log(
+  //   '🚀 ~ file: movie-card.component.jsx:12 ~ MovieCard ~ inWatchlist:',
+  //   inWatchlist
+  // );
 
   const onPressPrimary = () => {
     navigation.navigate('MovieDetail', { id: id });

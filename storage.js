@@ -4,17 +4,18 @@ const WATCHLIST_KEY = 'watchlist';
 
 export const addToWatchlist = async (id) => {
   try {
-    const watchList = await getWatchList();
+    const watchlist = await getWatchList();
 
     // Only push unique movies
-    if (id in watchList) {
-      watchList.push(id);
-      await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchList));
+    if (!(id in watchlist)) {
+      console.log('🚀 ~ file: storage.js:11 ~ addToWatchlist ~ I PIUSH:');
+      watchlist.push(id);
+      await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
+      console.log(
+        `🚀 ~ file: storage.js ~ addToWatchlist: successfully added movie with id: ${id} to watchlist: `,
+        watchlist
+      );
     }
-
-    console.log(
-      `🚀 ~ file: storage.js ~ addToWatchlist: successfully added movie with id: ${id} to watchlist`
-    );
   } catch (error) {
     console.error(`Error adding movie with id: ${id} to watchlist: `, error);
   }
@@ -22,15 +23,19 @@ export const addToWatchlist = async (id) => {
 
 export const removeFromWatchlist = async (id) => {
   try {
-    const watchList = await getWatchList();
-    const index = watchList.indexOf(id);
+    const watchlist = await getWatchList();
+    const index = watchlist.indexOf(id);
 
     // Ensure we are not trying to remove a non-existent movie id.
     if (index > -1) {
-      watchList.splice(index, 1);
+      watchlist.splice(index, 1);
     }
 
-    await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchList));
+    await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
+    console.log(
+      `🚀 ~ file: storage.js ~ addToWatchlist: successfully removed movie with id: ${id} from watchlist: `,
+      watchlist
+    );
   } catch (error) {
     console.error(`Error removing movie with id: ${id}: `, error);
   }
@@ -51,9 +56,11 @@ export const getWatchList = async () => {
 
 export const isMovieInWatchlist = async (id) => {
   try {
+    // TODO:: problem with in??
     const watchlist = await getWatchList();
-
-    return id in watchlist;
+    console.log('WATCH', watchlist, id);
+    console.log(watchlist.indexOf(id) > -1);
+    return watchlist.indexOf(id) > -1;
   } catch (error) {
     console.error(`Error checking if movie is in the watchlist: `, error);
   }

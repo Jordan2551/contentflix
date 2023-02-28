@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { addToWatchlist, getWatchList } from '../storage';
 import { MovieCard } from './movie-card.component';
 
 export const MovieCardCarousel = (props) => {

@@ -276,7 +276,7 @@ export const MOVIES = [
     description:
       'A group of astronauts embarks on a mission to explore a newly discovered planet on the edge of the universe. But as they approach their destination, they discover that the planet is not what it seems, and their mission becomes a fight for survival against a deadly alien threat.',
     year: 2017,
-    image: require('../assets/movie-covers/3276556505.png'),
+    image: require('../assets/movie-covers/1776858311.png'),
     category: 'Action',
   },
   {
