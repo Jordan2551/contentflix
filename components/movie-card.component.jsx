@@ -3,72 +3,17 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 import { FAB, Text } from 'react-native-paper';
 import { CustomBadge } from './custom-badge.component';
 import { CustomButton } from './custom-button.component';
-import {
-  isMovieInWatchlist,
-  addToWatchlist,
-  removeFromWatchlist,
-} from '../storage';
 import { useNavigation } from '@react-navigation/native';
-import useSWR from 'swr';
+import { ROUTES } from '../navigators/constants';
+import { WatchlistButton } from './watchlist-button.component';
 
 // TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
   const { id, rating, title, year, image } = props;
-  const [inWatchlist, setInWatchlist] = useState(false);
   const navigation = useNavigation();
 
-  // Start with ugly UI (prototype) then work to a nicer look
-  // Every video should be a small PR (no more than 100 lines)
-  // Use react SWR
-  // Start with this in the video then switch to SWR
-  // Do it wrong do it right (sequences)
-  useEffect(() => {
-    const init = async () => {
-      if (await isMovieInWatchlist(id)) {
-        setInWatchlist(true);
-      } else {
-        setInWatchlist(false);
-      }
-    };
-    init();
-  }, []);
-
-  // DID NOT WORK?
-  // const { data, error, isLoading } = useSWR('test', () =>
-  //   isMovieInWatchlist(id)
-  // );
-  // console.log(
-  //   '🚀 ~ file: movie-card.component.jsx:37 ~ MovieCard ~ data:',
-  //   data
-  // );
-  // console.log(
-  //   '🚀 ~ file: movie-card.component.jsx:37 ~ MovieCard ~ isLoading:',
-  //   isLoading
-  // );
-
-  // console.log(
-  //   '🚀 ~ file: movie-card.component.jsx:12 ~ MovieCard ~ inWatchlist:',
-  //   inWatchlist
-  // );
-
   const onPressPrimary = () => {
-    navigation.navigate('MovieDetail', { id: id });
-  };
-
-  const onPressSecondary = async () => {
-    console.log(
-      '🚀 ~ file: movie-card.component.jsx:18 ~ onPressSecondary ~ isMovieInWatchlist:',
-      inWatchlist
-    );
-
-    // Determine if secondary action button should add or remove a movie from the watchlist
-    if (inWatchlist) {
-      await removeFromWatchlist(id);
-      setInWatchlist(false);
-    } else {
-      await addToWatchlist(id);
-      setInWatchlist(true);
-    }
+    navigation.navigate(ROUTES.MOVIE_DETAIL, { id: id });
   };
 
   return (
@@ -88,13 +33,7 @@ export const MovieCard = (props) => {
         </Text>
         <View style={styles.watchNowContainer}>
           <CustomButton text={'Watch Now'} onPress={onPressPrimary} />
-          <FAB
-            icon={inWatchlist ? 'minus' : 'plus'}
-            size={'small'}
-            color="black"
-            style={styles.addToWatchList}
-            onPress={onPressSecondary}
-          />
+          <WatchlistButton id={id} />
         </View>
       </View>
     </ImageBackground>
