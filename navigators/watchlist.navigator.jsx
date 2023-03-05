@@ -7,7 +7,10 @@ const Stack = createNativeStackNavigator();
 
 export const WatchlistNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.WATCHLIST}>
+    <Stack.Navigator
+      initialRouteName={ROUTES.WATCHLIST}
+      screenOptions={{ headerTitle: 'Watch your Favorites!' }}
+    >
       <Stack.Screen name={ROUTES.WATCHLIST} component={WatchlistScreen} />
     </Stack.Navigator>
   );

@@ -8,7 +8,10 @@ const Stack = createNativeStackNavigator();
 
 export const DiscoverNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.DISCOVER}>
+    <Stack.Navigator
+      initialRouteName={ROUTES.DISCOVER}
+      screenOptions={{ title: 'Discover New Movies' }}
+    >
       <Stack.Screen name={ROUTES.DISCOVER} component={DiscoverScreen} />
       <Stack.Screen
         name={ROUTES.MOVIE_DETAIL}

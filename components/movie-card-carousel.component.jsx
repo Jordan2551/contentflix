@@ -7,15 +7,15 @@ import { MovieCard } from './movie-card.component';
 export const MovieCardCarousel = (props) => {
   const { category, movies, horizontal = true, style = {} } = props;
 
-  const navigation = useNavigation();
-
   return (
     <View style={{ ...styles.container, ...style }}>
-      <Text variant="titleLarge" style={styles.category}>
-        {category}
-      </Text>
+      <Text variant="titleLarge">{category}</Text>
       <View>
-        <ScrollView horizontal={horizontal}>
+        <ScrollView
+          horizontal={horizontal}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
           {movies.map((movie, index) => {
             const { id, rating, title, year, image } = movie;
 
@@ -38,9 +38,6 @@ export const MovieCardCarousel = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 180,
-  },
-  category: {
-    marginBottom: 10,
+    flex: 1,
   },
 });

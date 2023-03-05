@@ -4,10 +4,10 @@ const WATCHLIST_KEY = 'watchlist';
 
 export const addToWatchlist = async (id) => {
   try {
-    const watchlist = await getWatchList();
+    const watchlist = await getWatchlist();
 
     // Only push unique movies
-    if (id && !(id in watchlist)) {
+    if (id && !watchlist.includes(id)) {
       watchlist.push(id);
       await AsyncStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
       console.log(`Successfully added movie with id: ${id} to watchlist: `);
@@ -19,7 +19,7 @@ export const addToWatchlist = async (id) => {
 
 export const removeFromWatchlist = async (id) => {
   try {
-    const watchlist = await getWatchList();
+    const watchlist = await getWatchlist();
     const index = watchlist.indexOf(id);
 
     // Ensure we are not trying to remove a non-existent movie id.
@@ -37,11 +37,11 @@ export const removeFromWatchlist = async (id) => {
   }
 };
 
-export const getWatchList = async () => {
+export const getWatchlist = async () => {
   try {
     const watchlist = await AsyncStorage.getItem(WATCHLIST_KEY);
     console.log(
-      '🚀 ~ file: storage.js:43 ~ getWatchList ~ watchlist:',
+      '🚀 ~ file: storage.js:43 ~ getWatchlist ~ watchlist:',
       watchlist
     );
     return watchlist != null ? JSON.parse(watchlist) : [];
@@ -53,7 +53,7 @@ export const getWatchList = async () => {
 export const isMovieInWatchlist = async (id) => {
   try {
     console.log('🚀 ~ file: storage.js:50 ~ isMovieInWatchlist ~ id:', id);
-    const watchlist = await getWatchList();
+    const watchlist = await getWatchlist();
     console.log(
       '🚀 ~ file: storage.js:52 ~ isMovieInWatchlist ~ watchlist:',
       watchlist

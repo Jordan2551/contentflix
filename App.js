@@ -29,7 +29,7 @@ export default function App() {
             <Tab.Screen
               name="Watchlist"
               component={WatchlistNavigator}
-              options={{ tabBarIcon: 'star-plus' }}
+              options={{ tabBarIcon: 'popcorn' }}
             />
           </Tab.Navigator>
         </NavigationContainer>

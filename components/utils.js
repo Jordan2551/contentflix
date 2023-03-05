@@ -14,6 +14,12 @@ export const getMoviesByCategories = () => {
   return result;
 };
 
+export const getMovies = (movieIds) => {
+  return MOVIES.filter((movie) => {
+    return movieIds.includes(movie.id);
+  });
+};
+
 export const filterMovies = (search) => {
   const moviesByCategory = getMoviesByCategories();
   let result = {};

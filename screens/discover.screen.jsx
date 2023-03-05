@@ -30,7 +30,7 @@ export const DiscoverScreen = () => {
               key={category}
               category={category}
               movies={filteredMovies[category]}
-              style={{ marginVertical: 30 }}
+              style={styles.movieCardCarousel}
             />
           );
         })}
@@ -45,8 +45,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 15,
   },
-
   searchBar: {
     backgroundColor: '#f3f3f3',
+  },
+  movieCardCarousel: {
+    marginVertical: 15,
   },
 });

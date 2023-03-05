@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
-import { addToWatchlist, removeFromWatchlist, getWatchList } from '../storage';
+import { addToWatchlist, removeFromWatchlist, getWatchlist } from '../storage';
 import { useQuery } from 'react-query';
 
 export const WatchlistButton = (props) => {
@@ -9,18 +9,11 @@ export const WatchlistButton = (props) => {
   const [inWatchlist, setInWatchlist] = useState(false);
 
   // Note: demonstrate how this works with and without cache
-  useQuery(
-    'getWatchList',
-    async () => {
-      const watchlist = await getWatchList();
-      return watchlist;
+  useQuery('getWatchlist', getWatchlist, {
+    onSuccess: (watchlist) => {
+      setInWatchlist(watchlist.includes(id));
     },
-    {
-      onSuccess: (watchlist) => {
-        setInWatchlist(watchlist.includes(id));
-      },
-    }
-  );
+  });
 
   const onPress = async () => {
     // Determine if secondary action button should add or remove a movie from the watchlist
@@ -35,7 +28,7 @@ export const WatchlistButton = (props) => {
 
   return (
     <FAB
-      icon={inWatchlist ? 'minus' : 'plus'}
+      icon={inWatchlist ? 'minus' : 'popcorn'}
       size={'small'}
       color="black"
       style={styles.addToWatchList}

@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginRight: 15,
+    marginTop: 15,
     width: 180,
     height: 180,
   },
