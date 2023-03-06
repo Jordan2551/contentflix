@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
-import { addToWatchlist, removeFromWatchlist, getWatchlist } from '../storage';
-import { useQuery } from 'react-query';
+import { addToWatchlist, removeFromWatchlist } from '../storage';
+import { useQueryClient } from 'react-query';
+import { useWatchlist, WATCHLIST_QUERY_KEY } from '../hooks/use-watchlist.hook';
 
 export const WatchlistButton = (props) => {
   const { id } = props;
-  const [inWatchlist, setInWatchlist] = useState(false);
 
-  // Note: demonstrate how this works with and without cache
-  useQuery('getWatchlist', getWatchlist, {
-    onSuccess: (watchlist) => {
-      setInWatchlist(watchlist.includes(id));
-    },
-  });
+  const queryClient = useQueryClient();
+  const [inWatchlist, setInWatchlist] = useState(false);
+  const { watchlist, error, isLoading } = useWatchlist();
+
+  // Set if the movie is in the watch list after the side effect of getting the watchlist from useWatchlist
+  useEffect(() => {
+    if (watchlist.includes(id)) {
+      setInWatchlist(true);
+    } else {
+      setInWatchlist(false);
+    }
+  }, [watchlist, isLoading, error]);
 
   const onPress = async () => {
     // Determine if secondary action button should add or remove a movie from the watchlist
@@ -24,6 +30,9 @@ export const WatchlistButton = (props) => {
       await addToWatchlist(id);
       setInWatchlist(true);
     }
+
+    // Invalidate the cache for the watchlist key so that other components re-fetch.
+    queryClient.invalidateQueries(WATCHLIST_QUERY_KEY);
   };
 
   return (

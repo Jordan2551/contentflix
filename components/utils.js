@@ -20,6 +20,10 @@ export const getMovies = (movieIds) => {
   });
 };
 
+export const getMovie = (id) => {
+  return MOVIES.find((currentMovie) => currentMovie.id === id);
+};
+
 export const filterMovies = (search) => {
   const moviesByCategory = getMoviesByCategories();
   let result = {};

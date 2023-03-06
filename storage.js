@@ -52,12 +52,8 @@ export const getWatchlist = async () => {
 
 export const isMovieInWatchlist = async (id) => {
   try {
-    console.log('🚀 ~ file: storage.js:50 ~ isMovieInWatchlist ~ id:', id);
     const watchlist = await getWatchlist();
-    console.log(
-      '🚀 ~ file: storage.js:52 ~ isMovieInWatchlist ~ watchlist:',
-      watchlist
-    );
+
     return watchlist.includes(id);
   } catch (error) {
     console.error(`Error checking if movie is in the watchlist: `, error);

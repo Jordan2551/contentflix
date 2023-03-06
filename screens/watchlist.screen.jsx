@@ -1,27 +1,19 @@
-import { useRoute } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import { Link } from '@react-navigation/native';
+import React, { useMemo } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { isError, useQuery } from 'react-query';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
 import { getMovies } from '../components/utils';
-import { getWatchlist } from '../storage';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useWatchlist } from '../hooks/use-watchlist.hook';
 
 export const WatchlistScreen = () => {
-  const { params } = useRoute();
-  const [watchlist, setWatchlist] = useState([]);
+  const { watchlist, error, isLoading } = useWatchlist();
 
-  // MAKE ADDING / REMOVING CARDS RESPONSIVE TO ALL TABS
-  // Make phase 1 where the cards dont update when clicking add then start improving it in next video
-  // Make phase 2 into a hook that enables adding / removing of watchlist item and re-rendering on useFocusEffect, etc
-  // Make into a hook. See how this logic is exactly the same as watchlist-button.component?
-  const { error, isLoading } = useQuery('query', getWatchlist, {
-    onSuccess: (data) => {
-      const movies = getMovies(data);
-      setWatchlist(movies);
-    },
-  });
+  const watchlistMovies = useMemo(() => {
+    return getMovies(watchlist);
+  }, [watchlist, isLoading, error]);
+
   // TODO:: MAKE LOADING SCREEN
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -31,11 +23,21 @@ export const WatchlistScreen = () => {
   if (error) {
     return <Text>Error!</Text>;
   }
+
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <MovieCardCarousel movies={watchlist} horizontal={false} />
-      </ScrollView>
+      {watchlist.length > 0 ? (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <MovieCardCarousel movies={watchlistMovies} horizontal={false} />
+        </ScrollView>
+      ) : (
+        <View style={styles.noMoviesContainer}>
+          <Text variant="headlineLarge">
+            No movies found
+            <Icon name={'popcorn'} size={30} color="rgba(208, 54, 28, 0.8)" />
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -44,5 +46,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  noMoviesContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
