@@ -1,20 +1,20 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
 import { addToWatchlist, removeFromWatchlist } from '../storage';
 import { useQueryClient } from 'react-query';
-import { useWatchlist, WATCHLIST_QUERY_KEY } from '../hooks/use-watchlist.hook';
+import { useWatchlist } from '../hooks/use-watchlist.hook';
 
 export const WatchlistButton = (props) => {
   const { id } = props;
 
   const queryClient = useQueryClient();
   const [inWatchlist, setInWatchlist] = useState(false);
-  const { watchlist, error, isLoading } = useWatchlist();
+  const { watchlist, error, isLoading, refetch } = useWatchlist();
 
   // Set if the movie is in the watch list after the side effect of getting the watchlist from useWatchlist
   useEffect(() => {
-    if (watchlist.includes(id)) {
+    if (!isLoading && watchlist.includes(id)) {
       setInWatchlist(true);
     } else {
       setInWatchlist(false);
@@ -31,8 +31,8 @@ export const WatchlistButton = (props) => {
       setInWatchlist(true);
     }
 
-    // Invalidate the cache for the watchlist key so that other components re-fetch.
-    queryClient.invalidateQueries(WATCHLIST_QUERY_KEY);
+    // Refetch our watchlist query!
+    refetch();
   };
 
   return (
