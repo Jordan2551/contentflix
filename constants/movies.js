@@ -19,7 +19,7 @@ export const MOVIES = [
     year: 2018,
     image: require('../assets/movie-covers/278344330.png'),
     video: require('../assets/video.mp4'),
-    category: 'Action',
+    category: 'Drama',
   },
   {
     id: '5jKz5P',

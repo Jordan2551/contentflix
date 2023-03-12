@@ -40,10 +40,7 @@ export const removeFromWatchlist = async (id) => {
 export const getWatchlist = async () => {
   try {
     const watchlist = await AsyncStorage.getItem(WATCHLIST_KEY);
-    console.log(
-      '🚀 ~ file: storage.js:43 ~ getWatchlist ~ watchlist:',
-      watchlist
-    );
+    console.log('Successfully fetched watchlist:', watchlist);
     return watchlist != null ? JSON.parse(watchlist) : [];
   } catch (error) {
     console.error(`Error getting movies: `, error);

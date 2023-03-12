@@ -10,6 +10,15 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
 
+/*
+
+TODO::
+1) Make favicon?
+2) Usememo, useCallback
+3) Prettyify: single quites
+4) Prettify: space between brackets
+5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
+*/
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>

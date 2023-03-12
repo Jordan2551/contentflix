@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Badge, Button, Text, Title } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import { MOVIES } from '../constants/movies';
 import { CustomBadge } from './custom-badge.component';
 import { MovieCardCarousel } from './movie-card-carousel.component';

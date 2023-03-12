@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.9.10",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
+    "contentful": "^9.3.3",
     "expo": "~47.0.12",
     "expo-av": "~13.0.3",
     "expo-status-bar": "~1.4.2",
