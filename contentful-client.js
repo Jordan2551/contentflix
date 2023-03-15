@@ -1,20 +1,19 @@
-import { createClient } from 'contentful';
+import axios from 'axios';
 
-client = createClient({
-  space: 'inyc4jqsr0km',
-  environment: 'master',
-  accessToken: '',
-});
+const contentfulApi = 'https://cdn.contentful.com';
 
-// import { createClient } from 'contentful';
+//TODO:: use .env
+export const getContentfulEntries = async () => {
+  const result = await axios.get(
+    `${contentfulApi}/spaces/inyc4jqsr0km/environments/master/entries?`,
+    {
+      headers: {
+        Authorization: `Bearer AQXiW-jE9OjLQxzoaBbWaTF59EtX8jtJh-c21MySuro`,
+      },
+    }
+  );
 
-// const client = createClient({
-//   space: 'inyc4jqsr0km',
-//   environment: 'master', // defaults to 'master' if not set
-//   accessToken: '',
-// });
+  return result.data;
+};
 
-client
-  .getEntry('uT6ltM1n61T1Ezg3zB5H1')
-  .then((entry) => console.log(entry))
-  .catch(console.error);
+export default getContentfulEntries;

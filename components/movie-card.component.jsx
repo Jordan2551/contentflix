@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
-import { FAB, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import { CustomBadge } from './custom-badge.component';
 import { CustomButton } from './custom-button.component';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTES } from '../navigators/constants';
 import { WatchlistButton } from './watchlist-button.component';
 
-// TODO:: how to set up a universal theme?
 export const MovieCard = (props) => {
   const { id, rating, title, year, image } = props;
   const navigation = useNavigation();

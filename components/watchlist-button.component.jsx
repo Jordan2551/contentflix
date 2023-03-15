@@ -8,7 +8,6 @@ import { useWatchlist } from '../hooks/use-watchlist.hook';
 export const WatchlistButton = (props) => {
   const { id } = props;
 
-  const queryClient = useQueryClient();
   const [inWatchlist, setInWatchlist] = useState(false);
   const { watchlist, error, isLoading, refetch } = useWatchlist();
 

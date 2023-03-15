@@ -6,10 +6,16 @@ import { DiscoverNavigator } from './navigators/discover.navigator';
 import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import getContentfulEntries from './contentful-client';
 
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
 
+// TODO:: make this nice and parse it
+getContentfulEntries().then((data) => {
+  console.log('DONE');
+  console.log(JSON.stringify(data));
+});
 /*
 
 TODO::
@@ -18,6 +24,9 @@ TODO::
 3) Prettyify: single quites
 4) Prettify: space between brackets
 5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
+6) Sort out file structure locations
+7) Set up a universal theme?
+8) Loading screen for watchlist-screen
 */
 export default function App() {
   return (

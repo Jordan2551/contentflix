@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
 
 export const CustomButton = (props) => {
   const { text, onPress } = props;
