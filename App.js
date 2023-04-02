@@ -5,23 +5,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { DiscoverNavigator } from './navigators/discover.navigator';
 import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import getContentfulEntries from './contentful-client';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { getContentfulEntries } from './contentful-client';
 
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
 
-// TODO:: make this nice and parse it
-getContentfulEntries().then((data) => {
-  console.log('DONE');
-  console.log(JSON.stringify(data));
-});
 /*
-
 TODO::
 1) Make favicon?
 2) Usememo, useCallback
-3) Prettyify: single quites
+3) Prettyify: single quotes
 4) Prettify: space between brackets
 5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
 6) Sort out file structure locations

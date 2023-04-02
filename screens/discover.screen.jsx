@@ -3,8 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
 import { filterMovies } from '../components/utils';
 import { Searchbar } from 'react-native-paper';
-// import { useQuery } from 'react-query';
-// import { getEntires } from '../contentful-client';
+import { UseContentfulData } from '../hooks/use-contentful-data.hook';
 
 export const DiscoverScreen = () => {
   const [filteredMovies, setFilteredMovies] = useState(filterMovies(''));
@@ -17,11 +16,7 @@ export const DiscoverScreen = () => {
     setFilteredMovies(filterMovies(query));
   };
 
-  // const { data } = useQuery('contentful-test', { queryFn: getEntires });
-  // console.log(
-  //   '🚀 ~ file: discover.screen.jsx:20 ~ DiscoverScreen ~ data:',
-  //   data
-  // );
+  const { data, error, isLoading } = UseContentfulData();
 
   return (
     <View style={styles.container}>
