@@ -7,6 +7,7 @@ import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import { ROUTES } from './navigators/constants';
+import { MD2Colors, MD3Colors } from 'react-native-paper';
 
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
@@ -34,7 +35,9 @@ export default function App() {
           <Tab.Navigator
             initialRouteName={ROUTES.DISCOVER}
             screenOptions={{ headerShown: false }}
-            inactiveColor="black"
+            barStyle={{ backgroundColor: MD2Colors.black }}
+            inactiveColor={MD2Colors.white}
+            activeColor={MD2Colors.white}
           >
             <Tab.Screen
               name={ROUTES.DISCOVER}

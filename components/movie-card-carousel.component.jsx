@@ -5,10 +5,6 @@ import { MovieCard } from './movie-card.component';
 
 export const MovieCardCarousel = (props) => {
   const { category, movies, horizontal = true, style = {} } = props;
-  console.log(
-    '🚀 ~ file: movie-card-carousel.component.jsx:8 ~ MovieCardCarousel ~ movies:',
-    movies
-  );
 
   return (
     <View style={{ ...styles.container, ...style }}>

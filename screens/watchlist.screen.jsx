@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { MD2Colors, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
 import { getMoviesByIds } from '../components/utils';
 import { useWatchlist } from '../hooks/use-watchlist.hook';
 import { useContentfulData } from '../hooks/use-contentful-data.hook';
+import { Loading } from '../components/core/loading.component';
+import { Error } from '../components/core/error.component';
 
 export const WatchlistScreen = () => {
   const { movies, error, isLoading } = useContentfulData();
@@ -19,14 +21,12 @@ export const WatchlistScreen = () => {
     return getMoviesByIds(movies, watchlist);
   }, [watchlist, isLoading, error]);
 
-  // TODO:: MAKE LOADING SCREEN
   if (isLoading || isWatchlistLoading) {
-    return <Text>Loading...</Text>;
+    return <Loading />;
   }
 
-  // TODO:: MAKE ERROR SCREEN
   if (error || watchlistError) {
-    return <Text>Error!</Text>;
+    return <Error />;
   }
 
   return (
@@ -39,7 +39,7 @@ export const WatchlistScreen = () => {
         <View style={styles.noMoviesContainer}>
           <Text variant="headlineLarge">
             No movies found
-            <Icon name={'popcorn'} size={30} color="rgba(208, 54, 28, 0.8)" />
+            <Icon name={'popcorn'} size={30} color={MD2Colors.redA200} />
           </Text>
         </View>
       )}

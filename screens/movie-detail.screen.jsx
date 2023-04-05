@@ -6,6 +6,7 @@ import { filterMoviesByCategory, getMovieById } from '../components/utils';
 import { useContentfulData } from '../hooks/use-contentful-data.hook';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { Loading } from '../components/core/loading.component';
 
 export const MovieDetailScreen = () => {
   const { params } = useRoute();
@@ -22,13 +23,12 @@ export const MovieDetailScreen = () => {
     return <Text>Error: movie with id: {id} not found!</Text>;
   }
 
-  // TODO:: LOADING COMPONENT, ERROR COMPONENT
   if (isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator animating={true} color={MD2Colors.amber800} />
-      </View>
-    );
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error />;
   }
 
   return (
@@ -48,6 +48,7 @@ export const MovieDetailScreen = () => {
 
 const styles = StyleSheet.create({
   watchMoreContainer: {
-    marginVertical: 20,
+    paddingHorizontal: 10,
+    marginTop: 10,
   },
 });

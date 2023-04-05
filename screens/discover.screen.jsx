@@ -5,8 +5,10 @@ import {
   filterMoviesByCategory,
   filterMoviesByQuery,
 } from '../components/utils';
-import { ActivityIndicator, MD2Colors, Searchbar } from 'react-native-paper';
+import { Searchbar } from 'react-native-paper';
 import { useContentfulData } from '../hooks/use-contentful-data.hook';
+import { Loading } from '../components/core/loading.component';
+import { Error } from '../components/core/error.component';
 
 export const DiscoverScreen = () => {
   const { movies, categories, error, isLoading } = useContentfulData();
@@ -20,13 +22,13 @@ export const DiscoverScreen = () => {
     setSearch(query);
   };
 
-  // TODO:: LOADING COMPONENT
   if (isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator animating={true} color={MD2Colors.amber800} />
-      </View>
-    );
+    return <Loading />;
+  }
+
+  // TODO:: GREAT BUT APP WONT ACTUALLY GET TO THIS STATE IF ERROR RAISES
+  if (error) {
+    return <Error />;
   }
 
   return (
@@ -58,11 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 15,
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   searchBar: {
     backgroundColor: '#f3f3f3',

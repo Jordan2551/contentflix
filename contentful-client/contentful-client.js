@@ -12,7 +12,7 @@ export const getContentfulData = async () => {
     );
 
     const movies = parseContentfulData(result.data);
-    return movies ?? [];
+    return movies;
   } catch (error) {
     console.error('Error getting contentful data: ', error);
   }
