@@ -18,7 +18,9 @@ export const MovieCard = (props) => {
   return (
     <ImageBackground
       imageStyle={styles.image}
-      source={image}
+      source={{
+        uri: image,
+      }}
       style={styles.imageContainer}
     >
       <View style={styles.colorOverlay} />

@@ -4,21 +4,20 @@ import { Text } from 'react-native-paper';
 import { MOVIES } from '../constants/movies';
 import { CustomBadge } from './custom-badge.component';
 import { MovieCardCarousel } from './movie-card-carousel.component';
-import { getMoviesByCategories } from './utils';
+import { filterMoviesByCategory, getMoviesByCategories } from './utils';
 
 // NOTE: this will only work with expo. If using RN CLI, use react-native-video: https://blog.logrocket.com/adding-videos-react-native-react-native-video/
 import { Video } from 'expo-av';
 
-const moviesByCategories = getMoviesByCategories(MOVIES);
-
 export const MovieDetail = (props) => {
-  const { movie } = props;
+  const { movie, movies } = props;
   const { title, image, rating, description, year, category, video } = movie;
 
+  // TODO:: SEPARATE MOVEI DETAIL FROM CAROUSEL
   return (
     <ScrollView>
       <Video
-        source={video}
+        source={{ uri: video }}
         style={styles.video}
         posterSource={image}
         useNativeControls
@@ -38,7 +37,7 @@ export const MovieDetail = (props) => {
           <Text variant="headlineMedium">Watch more {category}</Text>
           <MovieCardCarousel
             key={category}
-            movies={moviesByCategories[category]}
+            movies={filterMoviesByCategory(movies, category)}
             horizontal={true}
           />
         </View>

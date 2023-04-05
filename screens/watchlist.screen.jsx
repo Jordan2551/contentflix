@@ -3,23 +3,29 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MovieCardCarousel } from '../components/movie-card-carousel.component';
-import { getMovies } from '../components/utils';
+import { getMoviesByIds } from '../components/utils';
 import { useWatchlist } from '../hooks/use-watchlist.hook';
+import { useContentfulData } from '../hooks/use-contentful-data.hook';
 
 export const WatchlistScreen = () => {
-  const { watchlist, error, isLoading } = useWatchlist();
+  const { movies, error, isLoading } = useContentfulData();
+  const {
+    watchlist,
+    error: watchlistError,
+    isLoading: isWatchlistLoading,
+  } = useWatchlist();
 
   const watchlistMovies = useMemo(() => {
-    return getMovies(watchlist);
+    return getMoviesByIds(movies, watchlist);
   }, [watchlist, isLoading, error]);
 
   // TODO:: MAKE LOADING SCREEN
-  if (isLoading) {
+  if (isLoading || isWatchlistLoading) {
     return <Text>Loading...</Text>;
   }
 
   // TODO:: MAKE ERROR SCREEN
-  if (error) {
+  if (error || watchlistError) {
     return <Text>Error!</Text>;
   }
 

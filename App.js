@@ -6,7 +6,7 @@ import { DiscoverNavigator } from './navigators/discover.navigator';
 import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import { getContentfulEntries } from './contentful-client';
+import { ROUTES } from './navigators/constants';
 
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
@@ -29,17 +29,17 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="Discover"
+            initialRouteName={ROUTES.DISCOVER}
             screenOptions={{ headerShown: false }}
             inactiveColor="black"
           >
             <Tab.Screen
-              name="Discover"
+              name={ROUTES.DISCOVER}
               component={DiscoverNavigator}
               options={{ tabBarIcon: 'movie-search' }}
             />
             <Tab.Screen
-              name="Watchlist"
+              name={ROUTES.WATCHLIST}
               component={WatchlistNavigator}
               options={{ tabBarIcon: 'popcorn' }}
             />
