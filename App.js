@@ -21,6 +21,9 @@ TODO::
 6) Sort out file structure locations
 7) Set up a universal theme?
 8) Loading screen for watchlist-screen
+9) Fix  WARN  Found screens with the same name nested inside one another. Check:
+DISCOVER, DISCOVER > DISCOVER,
+WATCHLIST, WATCHLIST > WATCHLIST
 */
 export default function App() {
   return (
