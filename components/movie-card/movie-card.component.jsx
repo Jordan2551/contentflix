@@ -1,11 +1,11 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { CustomBadge } from './custom-badge.component';
+import { CustomBadge } from './components/custom-badge.component';
 import { CustomButton } from './custom-button.component';
 import { useNavigation } from '@react-navigation/native';
-import { ROUTES } from '../navigators/constants';
-import { WatchlistButton } from './watchlist-button.component';
+import { ROUTES } from '../../navigators/constants';
+import { WatchlistButton } from '../watchlist-button.component';
 
 export const MovieCard = (props) => {
   const { id, rating, title, year, image } = props;

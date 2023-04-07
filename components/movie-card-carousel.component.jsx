@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { MovieCard } from './movie-card.component';
+import { MovieCard } from './movie-card/movie-card.component';
 
 export const MovieCardCarousel = (props) => {
   const { category, movies, horizontal = true, style = {} } = props;
