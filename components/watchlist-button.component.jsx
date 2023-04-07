@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB, MD2Colors } from 'react-native-paper';
 import { addToWatchlist, removeFromWatchlist } from '../storage';
-import { useQueryClient } from 'react-query';
 import { useWatchlist } from '../hooks/use-watchlist.hook';
 
 export const WatchlistButton = (props) => {

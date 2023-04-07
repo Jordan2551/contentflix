@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: MD2Colors.white,
-    fontWeight: '300',
+    fontWeight: '400',
   },
   watchNowContainer: {
     flexDirection: 'row',

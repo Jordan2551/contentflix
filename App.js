@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { DiscoverNavigator } from './navigators/discover.navigator';
 import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { NAVIGATORS } from './navigators/constants';
 import { MD2Colors } from 'react-native-paper';
 
@@ -15,9 +15,7 @@ const queryClient = new QueryClient();
 /*
 TODO::
 1) Make favicon?
-2) Usememo, useCallback
 5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
-8) Error screens: make work
 */
 export default function App() {
   return (

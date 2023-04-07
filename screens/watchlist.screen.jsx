@@ -10,22 +10,22 @@ import { Loading } from '../components/core/loading.component';
 import { Error } from '../components/core/error.component';
 
 export const WatchlistScreen = () => {
-  const { movies, error, isLoading } = useContentfulData();
+  const { movies, isError, isLoading } = useContentfulData();
   const {
     watchlist,
-    error: watchlistError,
+    isError: isWatchlistError,
     isLoading: isWatchlistLoading,
   } = useWatchlist();
 
   const watchlistMovies = useMemo(() => {
     return getMoviesByIds(movies, watchlist);
-  }, [watchlist, isLoading, error]);
+  }, [watchlist, isLoading, isError]);
 
   if (isLoading || isWatchlistLoading) {
     return <Loading />;
   }
 
-  if (error || watchlistError) {
+  if (isError || isWatchlistError) {
     return <Error />;
   }
 

@@ -8,32 +8,31 @@ export const GET_CONTENTFUL_ENTRIES_QUERY_KEY = 'get_contentful_entries';
 export const useContentfulData = () => {
   const {
     data: contentfulData,
-    error,
+    isError,
     isLoading,
   } = useQuery(GET_CONTENTFUL_ENTRIES_QUERY_KEY, {
     queryFn: getContentfulData,
   });
-
   const movies = useMemo(() => {
-    if (!isLoading && !error) {
+    if (!isLoading && !isError) {
       return contentfulData;
     } else {
       return [];
     }
-  }, [contentfulData, isLoading, error]);
+  }, [contentfulData, isLoading, isError]);
 
   const categories = useMemo(() => {
-    if (!isLoading && !error) {
+    if (!isLoading && !isError) {
       return getMovieCategories(movies);
     } else {
       return [];
     }
-  }, [movies, isLoading, error]);
+  }, [movies, isLoading, isError]);
 
   return {
     movies,
     categories,
-    error,
+    isError,
     isLoading,
   };
 };

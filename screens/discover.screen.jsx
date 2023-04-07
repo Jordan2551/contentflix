@@ -11,7 +11,7 @@ import { Loading } from '../components/core/loading.component';
 import { Error } from '../components/core/error.component';
 
 export const DiscoverScreen = () => {
-  const { movies, categories, error, isLoading } = useContentfulData();
+  const { movies, categories, isError, isLoading } = useContentfulData();
   const [search, setSearch] = useState('');
 
   const filteredMovies = useMemo(() => {
@@ -26,8 +26,7 @@ export const DiscoverScreen = () => {
     return <Loading />;
   }
 
-  // TODO:: GREAT BUT APP WONT ACTUALLY GET TO THIS STATE IF ERROR RAISES
-  if (error) {
+  if (isError) {
     return <Error />;
   }
 

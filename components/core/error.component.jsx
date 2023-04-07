@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { MD2Colors, Text } from 'react-native-paper';
 
-export const Error = (props) => {
-  const { error } = props;
-
+export const Error = () => {
   return (
     <View style={styles.container}>
       <Text variant="bodyLarge" style={styles.errorText}>
