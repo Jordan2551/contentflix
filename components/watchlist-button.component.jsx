@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { FAB } from 'react-native-paper';
+import { FAB, MD2Colors } from 'react-native-paper';
 import { addToWatchlist, removeFromWatchlist } from '../storage';
 import { useQueryClient } from 'react-query';
 import { useWatchlist } from '../hooks/use-watchlist.hook';
@@ -47,7 +47,7 @@ export const WatchlistButton = (props) => {
 
 const styles = StyleSheet.create({
   addToWatchList: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: MD2Colors.white,
     borderRadius: 20,
   },
 });

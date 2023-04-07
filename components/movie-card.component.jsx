@@ -1,18 +1,18 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
-import { CustomBadge } from './components/custom-badge.component';
-import { CustomButton } from './custom-button.component';
+import { MD2Colors, Text } from 'react-native-paper';
+import { CustomBadge } from './core/custom-badge.component';
+import { CustomButton } from './core/custom-button.component';
 import { useNavigation } from '@react-navigation/native';
-import { ROUTES } from '../../navigators/constants';
-import { WatchlistButton } from '../watchlist-button.component';
+import { SCREENS } from '../navigators/constants';
+import { WatchlistButton } from './watchlist-button.component';
 
 export const MovieCard = (props) => {
   const { id, rating, title, year, image } = props;
   const navigation = useNavigation();
 
   const onPressPrimary = () => {
-    navigation.navigate(ROUTES.MOVIE_DETAIL, { id: id });
+    navigation.navigate(SCREENS.MOVIE_DETAIL, { id: id });
   };
 
   return (
@@ -55,10 +55,6 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'red',
   },
-  addToWatchList: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 20,
-  },
   image: {
     borderRadius: 20,
   },
@@ -69,10 +65,10 @@ const styles = StyleSheet.create({
     height: 180,
   },
   title: {
-    color: 'white',
+    color: MD2Colors.white,
   },
   subtitle: {
-    color: 'white',
+    color: MD2Colors.white,
     fontWeight: '300',
   },
   watchNowContainer: {

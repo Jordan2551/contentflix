@@ -1,7 +1,7 @@
 import React from 'react';
-import Star from '../assets/star.png';
+import Star from '../../assets/star.png';
 import { Image, StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { MD2Colors, Text } from 'react-native-paper';
 
 export const CustomBadge = (props) => {
   const { text, style = {} } = props;
@@ -16,7 +16,7 @@ export const CustomBadge = (props) => {
 
 const styles = StyleSheet.create({
   badgeContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: MD2Colors.black,
     flexDirection: 'row',
     borderRadius: 20,
     padding: 6,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     height: 17,
   },
   badgeText: {
-    color: 'white',
+    color: MD2Colors.white,
     marginLeft: 3,
   },
 });

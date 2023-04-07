@@ -18,7 +18,6 @@ export const MovieDetailScreen = () => {
     return getMovieById(movies, id);
   }, [id]);
 
-  console.log('🚀 ~ file: movie-detail.screen.jsx:17 ~ movie ~ movie:', movie);
   if (!movie) {
     return <Text>Error: movie with id: {id} not found!</Text>;
   }

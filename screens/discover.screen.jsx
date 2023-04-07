@@ -5,7 +5,7 @@ import {
   filterMoviesByCategory,
   filterMoviesByQuery,
 } from '../components/utils';
-import { Searchbar } from 'react-native-paper';
+import { MD2Colors, Searchbar } from 'react-native-paper';
 import { useContentfulData } from '../hooks/use-contentful-data.hook';
 import { Loading } from '../components/core/loading.component';
 import { Error } from '../components/core/error.component';
@@ -58,11 +58,11 @@ export const DiscoverScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: MD2Colors.white,
     padding: 15,
   },
   searchBar: {
-    backgroundColor: '#f3f3f3',
+    backgroundColor: MD2Colors.grey100,
   },
   movieCardCarousel: {
     marginVertical: 15,

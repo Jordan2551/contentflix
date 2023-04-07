@@ -6,8 +6,8 @@ import { DiscoverNavigator } from './navigators/discover.navigator';
 import { WatchlistNavigator } from './navigators/watchlist.navigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import { ROUTES } from './navigators/constants';
-import { MD2Colors, MD3Colors } from 'react-native-paper';
+import { NAVIGATORS } from './navigators/constants';
+import { MD2Colors } from 'react-native-paper';
 
 const Tab = createMaterialBottomTabNavigator();
 const queryClient = new QueryClient();
@@ -16,15 +16,8 @@ const queryClient = new QueryClient();
 TODO::
 1) Make favicon?
 2) Usememo, useCallback
-3) Prettyify: single quotes
-4) Prettify: space between brackets
 5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
-6) Sort out file structure locations
-7) Set up a universal theme?
-8) Loading screen for watchlist-screen
-9) Fix  WARN  Found screens with the same name nested inside one another. Check:
-DISCOVER, DISCOVER > DISCOVER,
-WATCHLIST, WATCHLIST > WATCHLIST
+8) Error screens: make work
 */
 export default function App() {
   return (
@@ -33,21 +26,20 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName={ROUTES.DISCOVER}
+            initialRouteName={NAVIGATORS.DISCOVER}
             screenOptions={{ headerShown: false }}
-            barStyle={{ backgroundColor: MD2Colors.black }}
-            inactiveColor={MD2Colors.white}
-            activeColor={MD2Colors.white}
+            inactiveColor={MD2Colors.grey700}
+            activeColor={MD2Colors.black}
           >
             <Tab.Screen
-              name={ROUTES.DISCOVER}
+              name={NAVIGATORS.DISCOVER}
               component={DiscoverNavigator}
-              options={{ tabBarIcon: 'movie-search' }}
+              options={{ tabBarIcon: 'movie-search', tabBarLabel: 'Discover' }}
             />
             <Tab.Screen
-              name={ROUTES.WATCHLIST}
+              name={NAVIGATORS.WATCHLIST}
               component={WatchlistNavigator}
-              options={{ tabBarIcon: 'popcorn' }}
+              options={{ tabBarIcon: 'popcorn', tabBarLabel: 'Watchlist' }}
             />
           </Tab.Navigator>
         </NavigationContainer>
