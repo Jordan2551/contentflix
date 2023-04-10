@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { getMovieCategories } from '../components/utils';
-import { getContentfulData } from '../contentful-client/contentful-client';
+import { getContentfulData } from '../contentful/contentful-client';
 
 export const GET_CONTENTFUL_ENTRIES_QUERY_KEY = 'get_contentful_entries';
 
@@ -13,6 +13,7 @@ export const useContentfulData = () => {
   } = useQuery(GET_CONTENTFUL_ENTRIES_QUERY_KEY, {
     queryFn: getContentfulData,
   });
+
   const movies = useMemo(() => {
     if (!isLoading && !isError) {
       return contentfulData;

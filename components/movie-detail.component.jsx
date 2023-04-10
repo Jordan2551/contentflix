@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { CustomBadge } from './core/custom-badge.component';
@@ -9,13 +9,20 @@ import { Video } from 'expo-av';
 export const MovieDetail = (props) => {
   const { movie } = props;
   const { title, image, rating, description, year, video } = movie;
+  const videoPlayerRef = useRef(null);
 
   return (
     <View>
       <Video
         source={{ uri: video }}
+        ref={videoPlayerRef}
+        posterSource={{ uri: image }}
         style={styles.video}
-        posterSource={image}
+        onReadyForDisplay={() => {
+          // Gets called whenever video source changes. Reset player position back to 0
+          // We do this because we can't do a navigation.reset for navigating to movie-detail as that will get rid of the initial navigaiton from discover
+          videoPlayerRef.current.setPositionAsync(0);
+        }}
         useNativeControls
       />
       <View style={styles.contentContainer}>

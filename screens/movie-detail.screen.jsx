@@ -20,8 +20,8 @@ export const MovieDetailScreen = () => {
   }, [id]);
 
   const moviesByCategory = useMemo(() => {
-    return filterMoviesByCategory(movies, category);
-  }, [movies, category]);
+    return filterMoviesByCategory(movies, movie.category);
+  }, [movies, movie.category]);
 
   if (!movie) {
     return <Text>isError: movie with id: {id} not found!</Text>;
