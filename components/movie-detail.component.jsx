@@ -56,10 +56,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
   description: {
     marginVertical: 10,
+    flexWrap: 'wrap',
   },
   year: {
     marginTop: 5,

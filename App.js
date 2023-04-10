@@ -14,8 +14,8 @@ const queryClient = new QueryClient();
 
 /*
 TODO::
-1) Make favicon?
 5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
+6) FIX NOT FOUND IOSPICKER?
 */
 export default function App() {
   return (
