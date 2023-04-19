@@ -14,8 +14,8 @@ const queryClient = new QueryClient();
 
 /*
 TODO::
-5) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
-6) FIX NOT FOUND IOSPICKER?
+1) Ask Mo how to import all of the contentful assets and movies in a json file
+2) SHOW HOW NOT TO STORE CONTENTFUL ACCESS KEY HARDCODED
 */
 export default function App() {
   return (

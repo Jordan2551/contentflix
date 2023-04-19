@@ -1,13 +1,13 @@
-import { useRoute } from '@react-navigation/native';
 import React, { useMemo } from 'react';
+import { useRoute } from '@react-navigation/native';
 import { Text } from 'react-native-paper';
 import { MovieDetail } from '../components/movie-detail.component';
-import { filterMoviesByCategory, getMovieById } from '../components/utils';
-import { useContentfulData } from '../hooks/use-contentful-data.hook';
-import { MovieCardCarousel } from '../components/movie-card-carousel.component';
+import { filterMoviesByCategory, getMovieById } from '../core/utils';
+import { useContentfulData } from '../core/hooks/use-contentful-data.hook';
+import { MovieCardCarousel } from '../components/movie-card/movie-card-carousel.component';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Loading } from '../components/core/loading.component';
-import { Error } from '../components/core/error.component';
+import { Loading } from '../components/app-state/loading.component';
+import { Error } from '../components/app-state/error.component';
 
 export const MovieDetailScreen = () => {
   const { params } = useRoute();

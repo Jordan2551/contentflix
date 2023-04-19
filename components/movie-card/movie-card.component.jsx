@@ -1,10 +1,10 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 import { MD2Colors, Text } from 'react-native-paper';
-import { CustomBadge } from './core/custom-badge.component';
-import { CustomButton } from './core/custom-button.component';
+import { CustomBadge } from '../custom-badge.component';
+import { CustomButton } from '../custom-button.component';
 import { useNavigation } from '@react-navigation/native';
-import { SCREENS } from '../navigators/constants';
+import { SCREENS } from '../../navigators/constants';
 import { WatchlistButton } from './watchlist-button.component';
 
 export const MovieCard = (props) => {

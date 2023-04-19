@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { getWatchlist } from '../storage';
+import { getWatchlist } from '../../storage';
 
 export const WATCHLIST_QUERY_KEY = 'watchlist';
 

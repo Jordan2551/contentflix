@@ -2,12 +2,12 @@ import React, { useMemo } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { MD2Colors, Text } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { MovieCardCarousel } from '../components/movie-card-carousel.component';
-import { getMoviesByIds } from '../components/utils';
-import { useWatchlist } from '../hooks/use-watchlist.hook';
-import { useContentfulData } from '../hooks/use-contentful-data.hook';
-import { Loading } from '../components/core/loading.component';
-import { Error } from '../components/core/error.component';
+import { MovieCardCarousel } from '../components/movie-card/movie-card-carousel.component';
+import { getMoviesByIds } from '../core/utils';
+import { useWatchlist } from '../core/hooks/use-watchlist.hook';
+import { useContentfulData } from '../core/hooks/use-contentful-data.hook';
+import { Loading } from '../components/app-state/loading.component';
+import { Error } from '../components/app-state/error.component';
 
 export const WatchlistScreen = () => {
   const { movies, isError, isLoading } = useContentfulData();
@@ -31,7 +31,7 @@ export const WatchlistScreen = () => {
 
   return (
     <View style={styles.container}>
-      {watchlist.length > 0 ? (
+      {watchlistMovies.length > 0 ? (
         <ScrollView showsVerticalScrollIndicator={false}>
           <MovieCardCarousel movies={watchlistMovies} horizontal={false} />
         </ScrollView>

@@ -1,11 +1,9 @@
-import { MOVIES } from '../constants/movies';
 import _ from 'lodash';
 
 export const getMovieCategories = (movies) => {
   return _.uniq(_.map(movies, 'category'));
 };
 
-// TODO:: getMoviesById
 export const getMoviesByIds = (movies, movieIds) => {
   return movies.filter((movie) => {
     return movieIds.includes(movie.id);

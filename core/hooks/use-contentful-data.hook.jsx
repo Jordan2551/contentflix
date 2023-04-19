@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { getMovieCategories } from '../components/utils';
-import { getContentfulData } from '../contentful/contentful-client';
+import { getContentfulData } from '../../contentful/contentful-client';
 
 export const GET_CONTENTFUL_ENTRIES_QUERY_KEY = 'get_contentful_entries';
 
@@ -22,17 +21,8 @@ export const useContentfulData = () => {
     }
   }, [contentfulData, isLoading, isError]);
 
-  const categories = useMemo(() => {
-    if (!isLoading && !isError) {
-      return getMovieCategories(movies);
-    } else {
-      return [];
-    }
-  }, [movies, isLoading, isError]);
-
   return {
     movies,
-    categories,
     isError,
     isLoading,
   };

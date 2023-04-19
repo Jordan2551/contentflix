@@ -1,5 +1,5 @@
 import React from 'react';
-import Star from '../../assets/star.png';
+import Star from '../assets/star.png';
 import { Image, StyleSheet, View } from 'react-native';
 import { MD2Colors, Text } from 'react-native-paper';
 

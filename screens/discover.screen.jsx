@@ -1,22 +1,27 @@
 import React, { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { MovieCardCarousel } from '../components/movie-card-carousel.component';
+import { MovieCardCarousel } from '../components/movie-card/movie-card-carousel.component';
 import {
   filterMoviesByCategory,
   filterMoviesByQuery,
-} from '../components/utils';
+  getMovieCategories,
+} from '../core/utils';
 import { MD2Colors, Searchbar } from 'react-native-paper';
-import { useContentfulData } from '../hooks/use-contentful-data.hook';
-import { Loading } from '../components/core/loading.component';
-import { Error } from '../components/core/error.component';
+import { useContentfulData } from '../core/hooks/use-contentful-data.hook';
+import { Loading } from '../components/app-state/loading.component';
+import { Error } from '../components/app-state/error.component';
 
 export const DiscoverScreen = () => {
-  const { movies, categories, isError, isLoading } = useContentfulData();
+  const { movies, isError, isLoading } = useContentfulData();
   const [search, setSearch] = useState('');
 
   const filteredMovies = useMemo(() => {
     return filterMoviesByQuery(movies, search);
   }, [movies, search]);
+
+  const categories = useMemo(() => {
+    return getMovieCategories(filteredMovies);
+  }, [filteredMovies, search]);
 
   const onSearchChange = (query) => {
     setSearch(query);

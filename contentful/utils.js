@@ -1,4 +1,3 @@
-// TODO:: test edge cases
 export const parseContentfulData = (data) => {
   // Get assets relevant to our movies so that we can fetch them when we can provide the image / video url to the movies later.
   const assets = [];
